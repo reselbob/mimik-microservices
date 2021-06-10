@@ -29,29 +29,11 @@ app.get('/sayHello/:name', (req, res) => {
   res.end(`Hello ${req.params.name}`);
 });
 
-// Sample HTTP Request with Query
-app.get('/add', (req, res) => {
-  const query = queryString.parse(req._parsedUrl.query);
-  res.end(`result is ${Number(query.x) + Number(query.y)}`);
-});
-
-// Sample Promise with Q
-app.get('/promise', (req, res) => {
-  const simplePromise = Q.Promise((resolve) => {
-    resolve('From the Q promise.');
-  });
-  simplePromise.then(answer => res.end(answer));
-});
-
-// Sample HTTP request with JSON Body and return it
-app.post('/form', (req, res) => {
-  res.end(req.body);
-});
 
 //Trivial ping, added as an additional service
 app.get('/ping/:name', (req, res) => {
 
-  const msg = {name: req.params.name, date: new Date()};
+  const msg = {msg: 'pong', name: req.params.name, date: new Date()};
   res.end(JSON.stringify(msg));
 });
 
